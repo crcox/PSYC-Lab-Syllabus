@@ -1,0 +1,439 @@
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{parskip}
+\usepackage[left=1in,top=1in,right=1in,bottom=1in,headheight=3ex,headsep=3ex]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{framed}
+\usepackage{amssymb}
+\usepackage{booktabs}
+
+\newcommand{\blankline}{\quad\pagebreak[2]}
+\makeatletter
+\global\let\@coursetime\@empty
+\def\@maketitle{%
+  \newpage
+  \null
+  \vskip 2em%
+  \begin{center}%
+    \includegraphics[width=1in]{../resources/LSU_Purple_RGB.png}\\
+  \let \footnote \thanks
+    {\LARGE \@title \par}%
+    \vskip 1.5em%
+    {\large
+      \lineskip .5em%
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+    \vskip 1em%
+    {\large \@date}%
+    \vskip 1em%
+	{\large \coursetime}%
+  \end{center}%
+  \par
+  \vskip 1.5em}
+\makeatother
+
+\renewenvironment{leftbar}[1][\hsize]%
+{%
+	\def\FrameCommand%
+	{%
+		\includegraphics[width=1cm]{../resources/idea.png}%
+		\fboxsep=\FrameSep\colorbox{cyan!5}%
+	}%
+	\MakeFramed{\hsize#1\advance\hsize-\width\FrameRestore}%
+}%
+{\endMakeFramed}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Modify Course title, instructor name, semester here %%%%%%%%
+
+\title{Cognitive Representation and Learning Lab}
+\author{Christopher Cox, PhD}
+\date{Spring 2018}
+\def\coursetime{Lab Meeting: W 4:00--5:00pm\\114 Audubon Hall\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[sc]{mathpazo}
+\linespread{1.05} % Palatino needs more leading (space between lines)
+\usepackage[T1]{fontenc}
+\usepackage[mmddyyyy]{datetime}% http://ctan.org/pkg/datetime
+%\usepackage{advdate}% http://ctan.org/pkg/advdate
+\usepackage{datenumber}
+\newcommand{\setdatenextclassMWF}{
+	\ifcase\thedatedayname\relax\or
+	\addtocounter{datenumber}{2}
+	\or\addtocounter{datenumber}{1}
+	\or\addtocounter{datenumber}{2}
+	\or\addtocounter{datenumber}{1}
+	\or\addtocounter{datenumber}{3}
+	\or\addtocounter{datenumber}{2}
+	\or\addtocounter{datenumber}{1}
+	\fi 
+	\setdatebynumber{\thedatenumber}
+}
+\newcommand{\dayabbrev}{%
+	\ifcase\thedatedayname \or
+	M\or T\or W\or Th\or
+	F\or Saturday\or Sunday\fi
+}%
+\newcommand{\monthday}{%
+	\ifnum\value{datemonth}<10 0\fi
+	\thedatemonth/%
+	\ifnum\value{dateday}<10 0\fi
+	\thedateday%
+}%
+\newcounter{courseweeknumber}
+\newcommand{\schedulerow}[3]{
+	\ifnum\thedatedayname=1\stepcounter{courseweeknumber}Week \thecourseweeknumber\fi%
+	& \texttt{\dayabbrev, \monthday} & #2 & #1 & #3\tabularnewline%
+}%
+\newcommand{\setdatefirstclass}{\setdate{2019}{1}{9}}
+\newcommand{\setdatefinalexam}{\setdate{2018}{12}{5}}
+%\renewcommand{\star}{{\Large\usefont{OML}{cmm}{m}{it}\symbol{63}}}
+\renewcommand{\star}{$\bigstar$}
+
+\usepackage{setspace}
+\usepackage{multicol}
+%\usepackage{indentfirst}
+\usepackage{fancyhdr,lastpage}
+\usepackage{url}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\usepackage{lastpage}
+\usepackage{amsmath}
+\usepackage{layout}
+
+\lhead{}
+\chead{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Modify header here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\rhead{\footnotesize RelearnLab, Spring 2019}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Don't touch this %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lfoot{}
+\cfoot{\small \thepage/\pageref*{LastPage}}
+\rfoot{}
+
+\usepackage[table]{xcolor}
+\usepackage{array}
+\usepackage{hyperref}
+\definecolor{lsupurple}{HTML}{461D7C}
+\definecolor{lsugold}{HTML}{FDD023}
+\hypersetup{colorlinks,breaklinks,linkcolor=lsupurple,urlcolor=lsupurple,anchorcolor=lsupurple,citecolor=black}
+
+\begin{document}
+
+\maketitle
+
+\blankline
+
+\begin{tabular*}{.93\textwidth}{@{\extracolsep{\fill}}rll}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Modify information %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+& \textbf{Principle Investigator} \\
+E-mail: & \href{mailto:chriscox@lsu.edu}{\texttt{chriscox@lsu.edu}} \\
+Office: & 229 Audubon Hall \\
+Office Hours: & MWF 3:00-4:00pm$^*$ \\
+&  \multicolumn{2}{r}{\small \it $^*$ Or by appointment.} \\
+\hline
+\end{tabular*}
+
+% First Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Lab Mission}
+
+The \textbf{Cognitive Representations and Learning (ReLearn)} Lab studies the cognitive and neural mechanisms that support semantic knowledge, with emphasis on its representational format.
+Knowledge of the world influences all other cognitive functions, from perception to working memory to episodic recollection.
+It can also be generally or selectively impaired as a consequence of stroke and dementia.
+
+We strive to make basic progress to contribute broadly to the development of cognitive theory, and to a more full understanding of how we acquire and utilize knowledge.
+
+% Second Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Required Materials}
+
+Access to a computer or laptop.
+
+% Third Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Prerequisites}
+Admission to the lab is on a case by case basis and by invitation.
+
+% Fourth Section %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Current Projects}
+
+\section*{Course Policies}
+
+\subsection*{Course schedule}
+
+The course schedule, printed at the end of this syllabus, is tentative and subject to revision.
+Revision may be necessary, for example, to accommodate unplanned university closures, illness, urgent conflicts, the course progressing at a speed that makes sticking to the schedule unrealistic, the availability of guest lecturers, or on-the-fly pedagogical decisions to make the course more engaging and coherent and to leverage materials and opportunities that arise over the semester.
+
+If a revision to the printed schedule is necessary, this information will be disseminated in class.
+If I change an assigned reading, cancel a class, or reschedule an exam, I will send an email to the group.
+If you miss a class, it is \emph{your} responsibility to follow up with your classmates, the TA, or myself to learn about what you missed.
+
+Quizzes and activities are unscheduled and you should assume that every class period will involve some combination of activities and quizzes.
+
+
+\subsection*{Missed Activities, Quizzes, or Exams}
+See \href{https://sites01.lsu.edu/wp/policiesprocedures/policies-procedures/22/}{PS-22} for the LSU attendance policy and valid reasons for absence.
+
+If a quiz or exam is missed due to an \emph{excused} absence a makeup will be scheduled.
+If participation activities are missed due to an \emph{excused} absence, there will be no penalty.
+
+%the points associated with the missed activities will be deducted from the total amount of activity points the absent student has the potential to earn.
+%For example, if there are $20$ possible points and a student misses $2$ due to an excused absence, their participation grade will be $\frac{18}{18}$, rather than $\frac{20}{20}$ or $\frac{18}{20}$.
+
+For an absence to be excused, the student must email the TA prior to the  anticipated absence or within two days of the missed class.
+If writing after an unanticipated absence, the email should include:
+
+\begin{enumerate}
+	\item An explanation of why the class was missed.
+	\item A statement of whether documentation is available.
+	\item Did the class contain a quiz or exam that you would like to make up?
+\end{enumerate}
+
+If documentation is not provided, the instructor reserves the right to deny the request.
+If a request is granted, you and the TA will schedule a time to makeup the quiz or exam on a date within one week of the intended date.%
+\footnote{In extreme circumstances (e.g., you miss a week due to a major medical event), the 1 week window may be extended on a case-by-case basis.}
+Either the TA or the instructor may proctor this makeup assignment.
+
+
+If you miss an appointment to make up a missed assignment, the reason for this absence will be evaluated by the same criteria as the original absence.
+If this second absence is not excused, the original assignment can no longer be made up.
+
+\subsection*{Grading Policy}
+All graded assignments are completed during class time or a scheduled exam period.
+Quizzes and exams will be graded quickly to provide ongoing feedback about performance in the course.
+Activities are tracked for participation.
+Feedback is provided early and often.
+See Table 1 for the grading distribution.
+
+\begin{table}[t]
+	\centering
+	\begin{tabular}{rllllllllllll}
+		\toprule
+		Grade & A+ & A & A- & B+ & B & B- & C+ & C & C- & D+ & D & D- \\  
+		\midrule
+		\% & 97 & 93 & 90 & 87 & 83 & 80 & 77 & 73 & 70 & 67 & 63 & 60 \\ 
+		Points & 359 & 344 & 333 & 322 & 307 & 296 & 285 & 270 & 259 & 248 & 233 & 222 \\ 
+		\bottomrule
+	\end{tabular}
+	\caption{Grade distribution. Values are the lowest that will achieve each grade.}
+\end{table}
+
+\subsection*{Contesting a Grade}
+\footnotesize{
+If you feel that an assignment has been graded incorrectly, you have the right to request a re-grading of the assignment within 3 days of when the grade is posted in Moodle or returned to you.
+To request a re-grading of an assignment, you must email the instructor with:
+(1) the assignment for which you are requesting re-grading and
+(2) a specific argument justifying each revision you feel is required.
+I reserve the right to reject your appeal.
+
+As your professor, I fully appreciate that your grade has real world consequences for you.
+There are minimum GPAs associated with maintaining funding and completing your major.
+It is \emph{your} responsibility to earn your grade in this course.
+It is my responsibility to grade fairly, and treat every student equally.
+I will not re-grade an assignment or revise a grade to help ensure you maintain a particular GPA.
+That would be an ethics violation and compromise the integrity of the course and the university.
+}
+
+\subsection*{General Statement on Academic Integrity}
+\footnotesize{
+	Louisiana State University adopted the Commitment to Community in 1995 to set forth guidelines for student behavior both inside and outside of the classroom.  The Commitment to Community charges students to maintain high standards of academic and personal integrity.  All students are expected to read and be familiar with the LSU Code of Student Conduct and Commitment to Community, found online at www.lsu.edu/saa.  It is your responsibility as a student at LSU to know and understand the academic standards for our community. 
+	
+	Students who are suspected of violating the Code of Conduct will be referred to the office of Student Advocacy \& Accountability.  For undergraduate students, a first academic violation could result in a zero grade on the assignment or failing the class and disciplinary probation until graduation.  For a second academic violation, the result could be suspension from LSU.  For graduate students, suspension is the appropriate outcome for the first offense.}
+
+%\begin{leftbar}
+%\emph{Excerpt taken from the LSU Code of Student Conduct, Section 8.0, page 18}
+%
+%\textbf{8.1 Academic Misconduct}
+%
+%A. High standards of academic integrity are crucial for the University to fulfill its educational mission. To uphold these standards, procedures have been established to address academic misconduct.
+%
+%As a guiding principle, the University expects Students to model the principles outlined in the University Commitment to Community, especially as it pertains to accepting responsibility for their actions and holding themselves and others to the highest standards of performance in an academic environment. For example, LSU students are responsible for submitting work for evaluation that reflects their individual performance and should not assume any assignment given by any professor is a ``group'' effort or work unless specifically noted on the assignment. In all other cases, students must assume the work is to be done independently. If the student has a question regarding the instructor's expectations for individual assignments, projects, tests, or other items submitted for a grade, it is the student's responsibility to seek clarification.
+%
+%Any Student found to have committed or to have attempted to commit Academic Misconduct is subject to the disciplinary sanctions set forth in Section 9.0.
+%
+%B. An instructor may not assign a disciplinary grade, such as an ``F'' or zero on an assignment, test, examination, or course as a sanction for admitted or suspected Academic Misconduct in lieu of formally charging the student with Academic Misconduct under the provisions of this Code. All grades assigned as a result of accountability action must be approved by the Dean of Students or designee.
+%\end{leftbar}
+
+\subsection*{Accommodations for Disabilities}
+\footnotesize{I share LSU's strong commitment to providing appropriate accommodations for students with disabilities. Eligibility for accommodation will be determined by the Office of Disability Services (ODS; \url{https://www.lsu.edu/disability/}), which will provide documentation that can be given to your instructors \emph{within the first two weeks of class}. Accommodations will be handled discretely, and the nature of that accommodation will be developed through active dialog between the student, the ODS, and the instructor.}
+
+\subsection*{Diversity statement}
+\footnotesize{I also stand with LSU's mission to support and sustain a diverse intellectual environment. ``LSU strives to create an inclusive, respectful, intellectually challenging climate that embraces individual difference in race, ethnicity, national origin, gender, sexual orientation, gender identity/expression, age, spirituality, socio-economic status, disability, family status, experiences, opinions, and ideas. LSU proactively cultivates and sustains a campus environment that values open dialogue, cooperation, shared responsibility, mutual respect, and cultural competence---the driving forces that enrich and enhance cutting edge research, first-rate teaching, and engaging community outreach activities.''
+\url{https://www.lsu.edu/diversity/about\_us/mission\_vision.php}}
+
+% Course Schedule %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Set first date of the semester as {Year}{Month}{Day}
+\setdatefirstclass%
+\begin{table}
+	\resizebox{\textwidth}{!}{
+	\begin{tabular}{rlcll}
+		\toprule
+		& Date & Chapter & Topic & Pages \tabularnewline
+		\midrule
+		\schedulerow{Introduction and syllabus overview}{}{}
+		\setdatenextclassMWF
+		
+		\schedulerow{History}{1}{1--24}
+		\setdatenextclassMWF
+		
+		\schedulerow{Assumptions}{1}{24--32}
+		\setdatenextclassMWF
+		
+		\schedulerow{Functional analysis of behavior}{2}{33--43}
+		\setdatenextclassMWF
+		
+		\schedulerow{Behavioral research methods}{2}{43--62}
+		\setdatenextclassMWF
+		
+		\schedulerow{Catch-up day for late adds}{}{}
+		\setdatenextclassMWF
+		
+		\schedulerow{\textcolor{lsupurple}{\textbf{No class: Labor day}}}{}{}
+		\setdatenextclassMWF
+		
+		\schedulerow{Phylogenetic behavior}{3}{63--79}
+		\setdatenextclassMWF
+		
+		\schedulerow{Temporal relations and conditioning }{3}{79--95}
+		\setdatenextclassMWF
+		
+		\schedulerow{Operant behavior and conditioning }{4}{96--119}
+		\setdatenextclassMWF
+		
+		\schedulerow{Reinforcement and problem solving }{4}{119--133}
+		\setdatenextclassMWF
+		
+		\schedulerow{Review for Exam 1}{}{}
+		\setdatenextclassMWF
+		
+		\schedulerow{\textbf{Exam 1: Chapters 1--4}}{}{}
+		\setdatenextclassMWF
+		
+		\schedulerow{Ratio and interval reinforcement schedules }{5}{134--150}
+		\setdatenextclassMWF
+		
+		\schedulerow{Generality of schedule effects }{5}{150--174}
+		\setdatenextclassMWF
+		
+		\schedulerow{Aversive control }{6}{174--192}
+		\setdatenextclassMWF
+		
+		\schedulerow{Physical punishment }{6}{192--219}
+		\setdatenextclassMWF
+		
+		\schedulerow{Operant-Respondent: Taste aversion }{7}{220--240}
+		\setdatenextclassMWF
+
+		\schedulerow{Adjunctive behavior }{7}{240--253}
+		\setdatenextclassMWF
+		
+		\schedulerow{Stimulus control: Generalization }{8}{254--272}
+		\setdatenextclassMWF
+		
+		\schedulerow{\textcolor{lsupurple}{\textbf{No class: Fall holiday}}}{}{}
+		\setdatenextclassMWF
+
+		\schedulerow{Errorless discrimination }{8}{272--290}
+		\setdatenextclassMWF
+		
+		\schedulerow{Review for Exam 2}{}{}
+		\setdatenextclassMWF
+		
+		\schedulerow{\textbf{Exam 2: Chapters 5--8}}{}{}
+		\setdatenextclassMWF
+		
+		\schedulerow{Choice and preference }{9}{290--306}
+		\setdatenextclassMWF
+		
+		\schedulerow{Choice, foraging, and behavioral economics }{9}{306--331}
+		\setdatenextclassMWF
+		
+		\schedulerow{Conditioned reinforcement: Information }{10}{332--348}
+		\setdatenextclassMWF
+		
+		\schedulerow{Delay reduction }{10}{348--363}
+		\setdatenextclassMWF
+		
+		\schedulerow{Correspondence relations: Infant imitation }{11}{364--377}
+		\setdatenextclassMWF
+		
+		\schedulerow{Generalized imitation }{11}{377--395}
+		\setdatenextclassMWF
+		
+		\schedulerow{Review for Exam 3}{}{}
+		\setdatenextclassMWF
+		
+		\schedulerow{\textbf{Exam 3: Chapters 9--11}}{}{}
+		\setdatenextclassMWF
+		
+		\schedulerow{Verbal behavior }{12}{396--416}
+		\setdatenextclassMWF
+		
+		\schedulerow{Higher-order verbal classes }{12}{416--433}
+		\setdatenextclassMWF
+		
+		\schedulerow{Applied behavior analysis: Research strategies }{13}{434--445}
+		\setdatenextclassMWF
+		
+		\schedulerow{Contingency management }{13}{446--455}
+		\setdatenextclassMWF
+		
+		\schedulerow{Applications }{13}{455--470}
+		\setdatenextclassMWF
+		
+		\schedulerow{\emph{Applied behavior analysis} (\star)}{}{}
+		\setdatenextclassMWF
+		
+		\schedulerow{Levels of selection }{14}{470--486}
+		\setdatenextclassMWF
+
+		\schedulerow{Exam Review}{}{}
+		\setdatenextclassMWF
+		
+		\schedulerow{\textbf{Exam 4: Chapters 12--14 + Special topics}}{}{}
+		\setdatenextclassMWF	
+
+		\schedulerow{\textcolor{lsupurple}{\textbf{No class: Thanksgiving break}}}{}{}
+		\setdatenextclassMWF
+
+		\schedulerow{\textbf{\it Learning in children with developmental disorders 1} (\star)}{}{}
+		\setdatenextclassMWF
+		
+		\schedulerow{\textbf{\it Learning in children with developmental disorders 2} (\star)}{}{}
+		\setdatenextclassMWF
+		
+		\schedulerow{\textbf{Last day of class}: Recap and final review}{}{}
+		\setdatefinalexam
+		
+		\textbf{FINAL EXAM}
+		\schedulerow{\textbf{Comprehensive Final Exam: 3--5pm}}{}{}
+		\bottomrule
+	\end{tabular}}
+	\label{table:schedule}
+	\caption{Course schedule.
+%		A = activity,
+%		Q = quiz,
+		\star = guest lecture on a special topic (not in textbook).
+		Chapter and page numbers are with reference to Pierce \& Cheney (2017), ``Behavior Analysis and Learning'' (6th Ed.)
+		``Catch-up day for late adds'' will be a review of the first 2 weeks.
+		If you attended class on \texttt{08/20}, attendance is optional on \texttt{08/31}.
+	}
+\end{table}
+
+\end{document}
